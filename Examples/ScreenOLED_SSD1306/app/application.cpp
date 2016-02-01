@@ -4,8 +4,8 @@
 
 
 #ifndef WIFI_SSID
-	#define WIFI_SSID "FRESHTOMATO 2.4GHz" 			// Put you SSID and Password here
-	#define WIFI_PWD "qawsedrf"
+	#define WIFI_SSID "your_ssid" 			// Put you SSID and Password here
+	#define WIFI_PWD "your_password"
 #endif
 
 

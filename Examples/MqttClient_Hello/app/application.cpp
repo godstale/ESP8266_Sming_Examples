@@ -6,8 +6,8 @@
 
 // If you want, you can define WiFi settings globally in Eclipse Environment Variables
 #ifndef WIFI_SSID
-	#define WIFI_SSID "FRESHTOMATO 2.4GHz" // Put you SSID and Password here
-	#define WIFI_PWD "qawsedrf"
+	#define WIFI_SSID "your_ssid" // Put you SSID and Password here
+	#define WIFI_PWD "your_password"
 #endif
 
 //* For I2C mode:
@@ -29,7 +29,7 @@ Timer procTimer;
 
 // MQTT client
 // For quickly check you can use: http://www.hivemq.com/demos/websocket-client/ (Connection= test.mosquitto.org:8080)
-MqttClient mqtt("tortuga.iptime.org", 1883, onMessageReceived);
+MqttClient mqtt("your_mqtt_server.com", 1883, onMessageReceived);
 
 
 // MQTT : Publish our message
@@ -63,7 +63,7 @@ void publishMessage()
 //	static char szMsg[50];
 //	for(int i=0; i<50; i++) szMsg[i] = 0x00;
 //	message.toCharArray(szMsg, 50);
-	mqtt.publish("messagebox", message); // or publishWithQoS
+	mqtt.publish("your_topic", message); // or publishWithQoS
 
 	displayTemp(message);
 }
@@ -90,7 +90,7 @@ void startMqttClient()
 		debugf("Unable to set the last will and testament. Most probably there is not enough memory on the device.");
 	}
 	mqtt.connect("ESP8266");
-	mqtt.subscribe("messagebox");
+	mqtt.subscribe("your_topic");
 	displayText("Start MQTT client...");
 }
 
