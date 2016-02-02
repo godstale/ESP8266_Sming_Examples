@@ -1,7 +1,7 @@
 #include <user_config.h>
 #include <SmingCore/SmingCore.h>
 
-#define LED_PIN 12 // GPIO14
+#define LED_PIN 12 // GPIO12 (D6)
 
 DriverPWM ledPWM;
 Timer procTimer;

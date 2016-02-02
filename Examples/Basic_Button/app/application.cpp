@@ -1,8 +1,8 @@
 #include <user_config.h>
 #include <SmingCore/SmingCore.h>
 
-#define BUTTON_PIN 14 // GPIO14
-#define LED_PIN 12 // GPIO14
+#define BUTTON_PIN 14 // GPIO14 (D5)
+#define LED_PIN 12 // GPIO12 (D6)
 
 Timer procTimer;
 void loop();

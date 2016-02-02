@@ -37,7 +37,7 @@ void doPWM() {
 			countUp = true;
 		}
 	}
-	HW_pwm.analogWrite(2, i);
+	HW_pwm.analogWrite(12, i);	// GPIO12 (D6)
 	Serial.print("current var = ");
 	Serial.print(i);
 	Serial.println();

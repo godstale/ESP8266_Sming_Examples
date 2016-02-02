@@ -1,7 +1,7 @@
 #include <user_config.h>
 #include <SmingCore/SmingCore.h>
 
-#define LED_PIN 2 // GPIO2
+#define LED_PIN 12 // GPIO12 (D6)
 
 Timer procTimer;
 bool state = true;
