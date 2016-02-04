@@ -7,6 +7,8 @@
 	#define WIFI_PWD "PleaseEnterPass"
 #endif
 
+Timer msgTimer;
+FTPServer ftp;
 HttpServer server;
 int totalActiveSockets = 0;
 
@@ -50,6 +52,15 @@ void wsMessageReceived(WebSocket& socket, const String& message)
 	socket.sendString(response);
 }
 
+int iMsgCount = 0;
+void wsSendMessage() {
+	iMsgCount++;
+	// Notify everybody about new connection
+	WebSocketsList &clients = server.getActiveWebSockets();
+	for (int i = 0; i < clients.count(); i++)
+		clients[i].sendString("Notify from server : message no. " + String(iMsgCount));
+}
+
 void wsBinaryReceived(WebSocket& socket, uint8_t* data, size_t size)
 {
 	Serial.printf("Websocket binary data recieved, size: %d\r\n", size);
@@ -63,6 +74,16 @@ void wsDisconnected(WebSocket& socket)
 	WebSocketsList &clients = server.getActiveWebSockets();
 	for (int i = 0; i < clients.count(); i++)
 		clients[i].sendString("We lost our friend :( Total: " + String(totalActiveSockets));
+}
+
+void startFTP()
+{
+	if (!fileExist("index.html"))
+		fileSetContent("index.html", "<h3>Please connect to FTP and upload files from folder 'web/build' (details in code)</h3>");
+
+	// Start FTP server
+	ftp.listen(21);
+	ftp.addUser("me", "123"); // FTP account
 }
 
 void startWebServer()
@@ -81,6 +102,8 @@ void startWebServer()
 	Serial.println("\r\n=== WEB SERVER STARTED ===");
 	Serial.println(WifiStation.getIP());
 	Serial.println("==============================\r\n");
+
+	msgTimer.initializeMs(5 * 1000, wsSendMessage).start(); // every 5 seconds
 }
 
 // Will be called when WiFi station was connected to AP
@@ -88,6 +111,7 @@ void connectOk()
 {
 	Serial.println("I'm CONNECTED");
 
+	startFTP();
 	startWebServer();
 }
 

@@ -8,7 +8,7 @@ EXTRA_INCDIR = include
 
 ## ESP_HOME sets the path where ESP tools and SDK are located.
 ## Windows:
-# ESP_HOME = c:/Espressif
+#ESP_HOME = c:\Espressif
 
 ## MacOS / Linux:
 # ESP_HOME = /opt/esp-open-sdk
@@ -32,9 +32,10 @@ COM_SPEED	= 115200
 
 ## Configure flash parameters (for ESP12-E and other new boards):
 SPI_MODE = dio
+SPI_SIZE = 4M
 
 ## SPIFFS options
 DISABLE_SPIFFS = 0
-#SPIFF_FILES = files
+SPIFF_FILES = E:/ownCloud/Project/ESP8266/EclipseSming/HttpServer_AJAX/files
 # Path to spiffy
 SPIFFY = C:/tools/mingw64/bin/spiffy
