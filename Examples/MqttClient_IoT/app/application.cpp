@@ -6,8 +6,8 @@
 
 // If you want, you can define WiFi settings globally in Eclipse Environment Variables
 #ifndef WIFI_SSID
-	#define WIFI_SSID "FRESHTOMATO 2.4GHz" // Put you SSID and Password here
-	#define WIFI_PWD "qawsedrf"
+	#define WIFI_SSID "your_ssid" // Put you SSID and Password here
+	#define WIFI_PWD "your_password"
 #endif
 
 //* For I2C mode:
@@ -29,7 +29,7 @@ Timer procTimer;
 
 // MQTT client
 // For quickly check you can use: http://www.hivemq.com/demos/websocket-client/ (Connection= test.mosquitto.org:8080)
-MqttClient mqtt("tortuga.iptime.org", 1883, onMessageReceived);
+MqttClient mqtt("your_MQTT_broker_url", 1883, onMessageReceived);
 
 
 // MQTT : Publish our message
